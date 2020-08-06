@@ -14,22 +14,22 @@ export class HeroesService {
   constructor(private http: HttpClient) {
     const Options = {
       headers: new HttpHeaders({
-        //Header for send
+        //Header for send - Solo cuando enviamos datos al servidor.
         'Content-Type': 'aplication/json',
       }),
     };
    }
 
-   getHeroes(): Observable<any[]> {
-    return this.http.get<any[]>(this.url);
+   getHeroes(): Observable<Heroe[]> {
+    return this.http.get<Heroe[]>(this.url);
   }
   
   
  getHeroe(idx):any{
-  return this.http.get<any>(this.url +idx)
-          
+  return this.http.get<Heroe[]>(this.url +idx)
+      
+    
   }
- 
   
 }
 export interface Heroe{

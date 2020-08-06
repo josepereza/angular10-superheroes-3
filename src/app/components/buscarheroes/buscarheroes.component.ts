@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { Observable,of } from 'rxjs';
-import { switchMap  } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
-import { HeroesService} from '../../servicios/heroes.service'
+import { HeroesService } from '../../servicios/heroes.service'
 
 @Component({
   selector: 'app-buscarheroes',
@@ -11,28 +11,28 @@ import { HeroesService} from '../../servicios/heroes.service'
   styleUrls: ['./buscarheroes.component.css']
 })
 export class BuscarheroesComponent implements OnInit {
-  
-   hero:any[]=[]
-  constructor(private router:Router, private activatedRoute:ActivatedRoute, private service:HeroesService) { }
- 
+
+  hero: any[] = []
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private service: HeroesService) { }
+
   ngOnInit() {
 
     this.activatedRoute.paramMap.subscribe(
-      (params) =>{
+      (params) => {
         console.log(params.get('termino'));
-         this.service.getHeroes().subscribe(valor=>{
-           console.log(valor)
-           this.hero=valor.filter(option => option.nombre
+        this.service.getHeroes().subscribe(valor => {
+          console.log(valor)
+          this.hero = valor.filter(option => option.nombre
             .toLowerCase().includes((params.get('termino'))));
-         })
+        })
       }
-       
-      )
-    
+
+    )
+
   }
-  verHeroe(idx:number){
+  verHeroe(idx: number) {
     this.router.navigate(['/heroe', idx])
   }
 
-  
+
 }

@@ -8,12 +8,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./heroes.component.css']
 })
 export class HeroesComponent implements OnInit {
- misheroes:any[];
+ misheroes:Heroe[];
   constructor(public _heroe:HeroesService, public router:Router) { }
 
   ngOnInit(): void {
 this._heroe.getHeroes().subscribe(valor=>{
-  console.log(this.misheroes)
+
   this.misheroes=valor;
 });
   }

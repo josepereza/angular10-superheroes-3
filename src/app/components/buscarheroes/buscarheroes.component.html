@@ -1,5 +1,7 @@
 <p>buscarheroes works!</p>
-
+<div *ngIf="hero.length==0" class="alert alert-primary" role="alert">
+  No se han encontrado resultados
+</div>
  
 <div class="card-columns">
   <app-heroe-tarjeta (heroeSeleccionado)="verHeroe($event)" [heroe]="heroe" *ngFor="let heroe of hero;">
